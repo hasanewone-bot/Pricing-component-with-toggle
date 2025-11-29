@@ -1,0 +1,259 @@
+@use './base' as *;
+
+.header {
+  animation: fade-in 0.8s ease-in-out alternate forwards;
+
+  &__heading {
+    margin: 6.5rem 0 3.8rem 0;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  &__text {
+    color: $color-secondary;
+  }
+
+  &__label {
+    width: 5.5rem;
+    height: 3rem;
+    background: $gradient-right;
+    border-radius: 5rem;
+    position: relative;
+    transition: all 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.7;
+    }
+  }
+
+  &__input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  &__span {
+    width: 2.3rem;
+    background-color: $color-primary--light;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    right: 0.3rem;
+    transform: translateY(-50%);
+    transition: all 0.3s;
+
+    &.input--is-checked {
+      transform: translate(-2.6rem, -50%);
+    }
+  }
+}
+
+.boxes {
+  margin: 8rem 0 3rem 0;
+  display: grid;
+  gap: 3rem;
+
+  @media (min-width: 1140px) {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 0;
+  }
+}
+
+.box {
+  background-color: $color-secondary--light;
+  border-radius: 1rem;
+  padding: 3.5rem 3rem 3rem 3rem;
+
+  transform: translateX(-50rem);
+
+  &:nth-child(1) {
+    animation: slide-in 1s ease-in-out 0.1s alternate forwards;
+  }
+
+  &:nth-child(2) {
+    animation: slide-in 1s ease-in-out 0.3s alternate forwards;
+  }
+
+  &:nth-child(3) {
+    animation: slide-in 1s ease-in-out 0.5s alternate forwards;
+  }
+
+  @media (min-width: 1140px) {
+    transform: translateX(-150rem);
+
+    &:nth-child(1) {
+      animation: slide-in 1s ease-in-out 0.5s alternate forwards;
+    }
+
+    &:nth-child(2) {
+      animation: slide-in 1s ease-in-out 0.3s alternate forwards;
+    }
+
+    &:nth-child(3) {
+      animation: slide-in 1s ease-in-out 0.1s alternate forwards;
+    }
+  }
+
+  &--purple {
+    color: $color-secondary--light;
+    background-image: $gradient-bottom;
+
+    @media (min-width: 1140px) {
+      padding: 6rem 3rem;
+    }
+
+    & .box__item {
+      border-top-color: rgba($color-primary--light, 0.4);
+
+      &:last-child {
+        border-color: rgba($color-primary--light, 0.4);
+      }
+    }
+  }
+
+  &__caption {
+    font-size: 1.8rem;
+  }
+
+  &__price {
+    color: $color-primary--dark;
+    font-size: clamp(6rem, 10vw, 7rem);
+    margin: 2rem 0 2.2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.8s;
+
+    &.price--is-visible {
+      opacity: 0;
+      visibility: hidden;
+      transition: unset;
+    }
+
+    &-span {
+      font-size: 4rem;
+    }
+
+    &--white {
+      color: $color-secondary--light;
+    }
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    font-size: 1.5rem;
+    border-top: 0.1rem solid rgba($color-secondary, 0.7);
+    padding: 1.6rem 0;
+
+    &:last-child {
+      border-bottom: 0.1rem solid rgba($color-secondary, 0.7);
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    background-image: $gradient-right;
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+    border: 0.1rem solid transparent;
+    border-radius: 0.5rem;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+    display: inline-block;
+    transition: color 0.3s, border 0.3s, transform 0.3s;
+
+    &:link,
+    &:visited {
+      color: $color-secondary--light;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    &:hover,
+    &:active {
+      color: $color-tertiary;
+      background-image: unset;
+      background-color: $color-secondary--light;
+      border: 0.1rem solid $color-tertiary;
+      transform: translateY(0.5rem);
+    }
+
+    &--white {
+      &:link,
+      &:visited {
+        color: $color-tertiary;
+        background-image: unset;
+        background-color: $color-secondary--light;
+      }
+
+      &:hover,
+      &:active {
+        color: $color-secondary--light;
+        background-color: transparent;
+        border: 0.1rem solid $color-secondary--light;
+      }
+    }
+  }
+}
+
+.attribution {
+  font-size: 1rem;
+  text-align: center;
+  margin-block: 2rem;
+
+  &__link:link,
+  &__link:visited {
+    text-transform: uppercase;
+    color: $color-tertiary;
+    transition: all 0.3s;
+  }
+
+  &__link:hover,
+  &__link:active {
+    color: $color-primary;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-150rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes movement {
+  0% {
+    background-position: top -1rem right, bottom -1rem left;
+  }
+
+  100% {
+    background-position: top right, bottom left;
+  }
+}
